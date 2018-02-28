@@ -7,7 +7,7 @@ type point struct {
 }
 
 func Point(x int, y int) point {
-	return point{x:x, y:y}
+	return point{x: x, y: y}
 }
 
 type Canvas interface {

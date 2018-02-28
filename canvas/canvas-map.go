@@ -1,7 +1,7 @@
 package canvas
 
 type MapCanvas struct {
-	width int
+	width  int
 	height int
 	points map[point]rune
 }
@@ -41,4 +41,3 @@ func (c *MapCanvas) Set(p point, r rune) bool {
 	c.points[p] = r
 	return true
 }
-
