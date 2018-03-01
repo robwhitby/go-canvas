@@ -18,9 +18,9 @@ func Console(c canvas.Canvas, out io.Writer) {
 	out.Write(hBorder)
 	out.Write(newline)
 
-	for y := 0; y < c.Height(); y++ {
+	for y := 1; y <= c.Height(); y++ {
 		out.Write(vBorder)
-		for x := 0; x < c.Width(); x++ {
+		for x := 1; x <= c.Width(); x++ {
 			out.Write([]byte(string(c.Get(x, y))))
 		}
 		out.Write(vBorder)

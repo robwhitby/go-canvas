@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	c := canvas.NewMapCanvas(11, 6)
-	c.Set(5, 3, '?')
+	c := canvas.NewMapCanvas(5, 3)
+	c.Set(3, 2, '?')
 
 	renderer.Console(c, os.Stdout)
 }

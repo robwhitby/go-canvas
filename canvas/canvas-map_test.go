@@ -14,10 +14,13 @@ func TestNewMapCanvas(t *testing.T) {
 
 func TestMapCanvas_Contains(t *testing.T) {
 	c := NewMapCanvas(4, 5)
-	assert.True(t, c.Contains(0, 0))
-	assert.True(t, c.Contains(3, 4))
-	assert.False(t, c.Contains(4, 3))
-	assert.False(t, c.Contains(4, 5))
+	assert.True(t, c.Contains(1, 1))
+	assert.True(t, c.Contains(4, 5))
+
+	assert.False(t, c.Contains(0, 1))
+	assert.False(t, c.Contains(1, 0))
+	assert.False(t, c.Contains(-1, 1))
+	assert.False(t, c.Contains(1, -1))
 }
 
 func TestMapCanvas_Get_EmptyPoint(t *testing.T) {
@@ -33,5 +36,5 @@ func TestMapCanvas_Set_InBounds(t *testing.T) {
 
 func TestMapCanvas_Set_OutOfBounds(t *testing.T) {
 	c := NewMapCanvas(4, 5)
-	assert.False(t, c.Set(4, 5, 'x'))
+	assert.False(t, c.Set(5, 4, 'x'))
 }

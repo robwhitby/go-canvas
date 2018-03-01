@@ -13,14 +13,14 @@ import (
 
 func TestConsole(t *testing.T) {
 	c := canvas.NewMapCanvas(4, 2)
-	c.Set(0, 0, 'a')
-	c.Set(2, 0, 'b')
-	c.Set(3, 1, 'c')
+	c.Set(1, 1, 'a')
+	c.Set(3, 1, 'b')
+	c.Set(4, 2, 'c')
 
 	out := &bytes.Buffer{}
 	Console(c, out)
 
-	expected := makeExpected(`
+	expected := makeOutput(`
 ------
 |a b |
 |   c|
@@ -30,6 +30,6 @@ func TestConsole(t *testing.T) {
 	assert.Equal(t, expected, out.String())
 }
 
-func makeExpected(s string) string {
+func makeOutput(s string) string {
 	return strings.TrimSpace(s) + "\n"
 }

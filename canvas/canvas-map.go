@@ -27,7 +27,7 @@ func (c *MapCanvas) Height() int {
 }
 
 func (c *MapCanvas) Contains(x, y int) bool {
-	return x < c.width && y < c.height
+	return x > 0 && x <= c.width && y > 0 && y <= c.height
 }
 
 func (c *MapCanvas) Get(x, y int) rune {
