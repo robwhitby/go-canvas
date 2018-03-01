@@ -1,5 +1,9 @@
 package canvas
 
+type point struct {
+	x, y int
+}
+
 type MapCanvas struct {
 	width  int
 	height int
@@ -22,22 +26,22 @@ func (c *MapCanvas) Height() int {
 	return c.height
 }
 
-func (c *MapCanvas) Contains(p point) bool {
-	return p.x < c.width && p.y < c.height
+func (c *MapCanvas) Contains(x, y int) bool {
+	return x < c.width && y < c.height
 }
 
-func (c *MapCanvas) Get(p point) rune {
-	val, exists := c.points[p]
+func (c *MapCanvas) Get(x, y int) rune {
+	val, exists := c.points[point{x, y}]
 	if exists {
 		return val
 	}
 	return ' '
 }
 
-func (c *MapCanvas) Set(p point, r rune) bool {
-	if !c.Contains(p) {
+func (c *MapCanvas) Set(x, y int, r rune) bool {
+	if !c.Contains(x, y) {
 		return false
 	}
-	c.points[p] = r
+	c.points[point{x, y}] = r
 	return true
 }

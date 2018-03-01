@@ -13,9 +13,9 @@ import (
 
 func TestConsole(t *testing.T) {
 	c := canvas.NewMapCanvas(4, 2)
-	c.Set(canvas.Point(0, 0), 'a')
-	c.Set(canvas.Point(2, 0), 'b')
-	c.Set(canvas.Point(3, 1), 'c')
+	c.Set(0, 0, 'a')
+	c.Set(2, 0, 'b')
+	c.Set(3, 1, 'c')
 
 	out := &bytes.Buffer{}
 	Console(c, out)

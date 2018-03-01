@@ -21,7 +21,7 @@ func Console(c canvas.Canvas, out io.Writer) {
 	for y := 0; y < c.Height(); y++ {
 		out.Write(vBorder)
 		for x := 0; x < c.Width(); x++ {
-			out.Write([]byte(string(c.Get(canvas.Point(x, y)))))
+			out.Write([]byte(string(c.Get(x, y))))
 		}
 		out.Write(vBorder)
 		out.Write(newline)

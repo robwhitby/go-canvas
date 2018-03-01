@@ -9,7 +9,7 @@ import (
 
 func main() {
 	c := canvas.NewMapCanvas(11, 6)
-	c.Set(canvas.Point(5, 3), '?')
+	c.Set(5, 3, '?')
 
 	renderer.Console(c, os.Stdout)
 }
