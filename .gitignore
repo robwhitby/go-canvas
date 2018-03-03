@@ -1,7 +1,5 @@
-/halfpipe_*
-/halfpipe
+gocanvas
 .idea
-/e2e_test/pipeline.yml
 .DS_Store
 
 

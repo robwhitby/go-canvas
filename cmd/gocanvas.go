@@ -3,13 +3,37 @@ package main
 import (
 	"os"
 
-	"github.com/robwhitby/go-canvas/canvas"
-	"github.com/robwhitby/go-canvas/renderer"
+	"fmt"
+
+	"bufio"
+
+	. "github.com/robwhitby/go-canvas"
 )
 
-func main() {
-	c := canvas.NewMapCanvas(5, 3)
-	c.Set(3, 2, '?')
+const prompt = "enter command: "
 
-	renderer.Console(c, os.Stdout)
+func main() {
+	canvas := NewMapCanvas(0, 0)
+	scanner := bufio.NewScanner(os.Stdin)
+
+	for {
+		fmt.Print(prompt)
+		scanner.Scan()
+		input := scanner.Text()
+
+		if input == "Q" {
+			break
+		}
+		command, err := ParseCommand(input)
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+		if err := command.Apply(canvas); err != nil {
+			fmt.Println(err)
+			continue
+		}
+		StringRenderer(canvas, os.Stdout)
+	}
+
 }

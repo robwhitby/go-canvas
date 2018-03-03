@@ -16,3 +16,8 @@ if ! ds=$(dep status 2> /dev/null); then
     echo "Run 'dep ensure' to fix"
     exit 1
 fi
+
+echo go build
+go build cmd/gocanvas.go
+
+echo Success! created ./gocanvas

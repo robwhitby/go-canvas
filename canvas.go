@@ -1,4 +1,13 @@
-package canvas
+package go_canvas
+
+type Canvas interface {
+	Width() int
+	Height() int
+	Contains(x, y int) bool
+	Get(x, y int) rune
+	Set(x, y int, r rune)
+	Recreate(x, y int)
+}
 
 type point struct {
 	x, y int
@@ -38,10 +47,12 @@ func (c *MapCanvas) Get(x, y int) rune {
 	return ' '
 }
 
-func (c *MapCanvas) Set(x, y int, r rune) bool {
-	if !c.Contains(x, y) {
-		return false
-	}
+func (c *MapCanvas) Set(x, y int, r rune) {
 	c.points[point{x, y}] = r
-	return true
+}
+
+func (c *MapCanvas) Recreate(width, height int) {
+	c.width = width
+	c.height = height
+	c.points = make(map[point]rune)
 }
