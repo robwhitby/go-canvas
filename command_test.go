@@ -113,7 +113,16 @@ func TestFill(t *testing.T) {
 		assert.Nil(t, err)
 		assertCanvas(t, canvas, "fffff\nf...f\nf. .f\nf...f\nfffff\n")
 	})
+}
 
+func TestClear(t *testing.T) {
+	t.Run("clears the canvas", func(t *testing.T) {
+		canvas := NewMapCanvas(3, 3)
+		canvas.Set(2, 3, 's')
+
+		NewClearCommand().Apply(canvas)
+		assertCanvas(t, canvas, "   \n   \n   \n")
+	})
 }
 
 func assertCanvas(t *testing.T, canvas Canvas, expected string) {

@@ -4,6 +4,7 @@ import (
 	"errors"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 var (
@@ -46,6 +47,10 @@ func ParseCommand(input string) (Command, error) {
 	if len(matches) > 0 {
 		ints := toInt(matches[1:3])
 		return NewFillCommand(ints[0], ints[1], rune(matches[3][0])), nil
+	}
+
+	if strings.ToLower(input) == "c" {
+		return NewClearCommand(), nil
 	}
 
 	return nil, errParseCommand

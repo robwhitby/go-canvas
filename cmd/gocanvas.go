@@ -7,21 +7,21 @@ import (
 
 	"bufio"
 
+	"strings"
+
 	. "github.com/robwhitby/go-canvas"
 )
-
-const prompt = "enter command: "
 
 func main() {
 	canvas := NewMapCanvas(0, 0)
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
-		fmt.Print(prompt)
+		fmt.Print("enter command: ")
 		scanner.Scan()
 		input := scanner.Text()
 
-		if input == "Q" {
+		if strings.ToLower(input) == "q" {
 			break
 		}
 		command, err := ParseCommand(input)

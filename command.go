@@ -120,3 +120,14 @@ func (f fillCommand) Apply(canvas Canvas) error {
 	}
 	return nil
 }
+
+type clearCommand struct{}
+
+func NewClearCommand() clearCommand {
+	return clearCommand{}
+}
+
+func (clearCommand) Apply(canvas Canvas) error {
+	canvas.Recreate(canvas.Width(), canvas.Height())
+	return nil
+}
