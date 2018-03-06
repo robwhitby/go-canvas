@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	canvas := NewMapCanvas(0, 0)
+	canvas := NewCanvas(0, 0)
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {

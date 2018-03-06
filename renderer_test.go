@@ -11,7 +11,7 @@ import (
 )
 
 func TestStringRenderer(t *testing.T) {
-	canvas := NewMapCanvas(4, 2)
+	canvas := NewCanvas(4, 2)
 	canvas.Set(1, 1, 'a')
 	canvas.Set(3, 1, 'b')
 	canvas.Set(4, 2, 'c')
@@ -30,7 +30,7 @@ func TestStringRenderer(t *testing.T) {
 }
 
 func TestStringRenderer_ZeroCanvas(t *testing.T) {
-	canvas := NewMapCanvas(0, 0)
+	canvas := NewCanvas(0, 0)
 	out := &bytes.Buffer{}
 	StringRenderer(canvas, out)
 	assert.Equal(t, "", out.String())

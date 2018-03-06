@@ -9,6 +9,14 @@ type Canvas interface {
 	Recreate(x, y int)
 }
 
+func NewCanvas(width int, height int) Canvas {
+	return &MapCanvas{
+		width:  width,
+		height: height,
+		points: make(map[point]rune),
+	}
+}
+
 type point struct {
 	x, y int
 }
@@ -17,14 +25,6 @@ type MapCanvas struct {
 	width  int
 	height int
 	points map[point]rune
-}
-
-func NewMapCanvas(width int, height int) Canvas {
-	return &MapCanvas{
-		width:  width,
-		height: height,
-		points: make(map[point]rune),
-	}
 }
 
 func (c *MapCanvas) Width() int {

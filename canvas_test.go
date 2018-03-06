@@ -7,13 +7,13 @@ import (
 )
 
 func TestNewMapCanvas(t *testing.T) {
-	c := NewMapCanvas(4, 5)
+	c := NewCanvas(4, 5)
 	assert.Equal(t, 4, c.Width())
 	assert.Equal(t, 5, c.Height())
 }
 
 func TestMapCanvas_Contains(t *testing.T) {
-	c := NewMapCanvas(4, 5)
+	c := NewCanvas(4, 5)
 
 	good := []point{{1, 1}, {4, 5}, {3, 4}}
 	for _, p := range good {
@@ -27,18 +27,18 @@ func TestMapCanvas_Contains(t *testing.T) {
 }
 
 func TestMapCanvas_Get_EmptyPoint(t *testing.T) {
-	c := NewMapCanvas(4, 5)
+	c := NewCanvas(4, 5)
 	assert.Equal(t, ' ', c.Get(1, 2))
 }
 
 func TestMapCanvas_Set_InBounds(t *testing.T) {
-	c := NewMapCanvas(4, 5)
+	c := NewCanvas(4, 5)
 	c.Set(1, 2, 'x')
 	assert.Equal(t, 'x', c.Get(1, 2))
 }
 
 func TestMapCanvas_Recreate(t *testing.T) {
-	c := NewMapCanvas(4, 5)
+	c := NewCanvas(4, 5)
 	c.Set(1, 1, 'x')
 	c.Recreate(1, 2)
 	assert.Equal(t, 1, c.Width())

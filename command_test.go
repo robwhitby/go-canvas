@@ -11,7 +11,7 @@ import (
 func TestNewCanvas(t *testing.T) {
 
 	t.Run("creates new canvas", func(t *testing.T) {
-		canvas := NewMapCanvas(3, 3)
+		canvas := NewCanvas(3, 3)
 		createCanvas := NewCreateCanvasCommand(4, 5)
 		err := createCanvas.Apply(canvas)
 
@@ -25,7 +25,7 @@ func TestNewCanvas(t *testing.T) {
 func TestLine(t *testing.T) {
 
 	t.Run("draws a horizontal line", func(t *testing.T) {
-		canvas := NewMapCanvas(10, 1)
+		canvas := NewCanvas(10, 1)
 		line := NewLineCommand(5, 1, 7, 1, 'h')
 		err := line.Apply(canvas)
 
@@ -34,7 +34,7 @@ func TestLine(t *testing.T) {
 	})
 
 	t.Run("draws a vertical line", func(t *testing.T) {
-		canvas := NewMapCanvas(3, 3)
+		canvas := NewCanvas(3, 3)
 		line := NewLineCommand(2, 1, 2, 3, 'v')
 		err := line.Apply(canvas)
 
@@ -43,7 +43,7 @@ func TestLine(t *testing.T) {
 	})
 
 	t.Run("error when not horizontal or vertical", func(t *testing.T) {
-		canvas := NewMapCanvas(3, 3)
+		canvas := NewCanvas(3, 3)
 		line := NewLineCommand(1, 2, 3, 4, 'd')
 		err := line.Apply(canvas)
 
@@ -52,7 +52,7 @@ func TestLine(t *testing.T) {
 	})
 
 	t.Run("ignores out of bounds", func(t *testing.T) {
-		canvas := NewMapCanvas(3, 3)
+		canvas := NewCanvas(3, 3)
 		line := NewLineCommand(1, 1, 5, 1, 'h')
 		err := line.Apply(canvas)
 
@@ -61,7 +61,7 @@ func TestLine(t *testing.T) {
 	})
 
 	t.Run("draws lines 'backwards'", func(t *testing.T) {
-		canvas := NewMapCanvas(3, 3)
+		canvas := NewCanvas(3, 3)
 		lineH := NewLineCommand(3, 1, 1, 1, 'h')
 		lineV := NewLineCommand(1, 3, 1, 1, 'v')
 
@@ -76,7 +76,7 @@ func TestLine(t *testing.T) {
 func TestRectangle(t *testing.T) {
 
 	t.Run("draws a rectangle", func(t *testing.T) {
-		canvas := NewMapCanvas(3, 3)
+		canvas := NewCanvas(3, 3)
 		rectangle := NewRectangleCommand(3, 3, 1, 1, 'r')
 		err := rectangle.Apply(canvas)
 
@@ -88,7 +88,7 @@ func TestRectangle(t *testing.T) {
 func TestFill(t *testing.T) {
 
 	t.Run("fills an empty canvas", func(t *testing.T) {
-		canvas := NewMapCanvas(3, 3)
+		canvas := NewCanvas(3, 3)
 		fill := NewFillCommand(1, 1, 'f')
 		err := fill.Apply(canvas)
 
@@ -97,7 +97,7 @@ func TestFill(t *testing.T) {
 	})
 
 	t.Run("fills an area", func(t *testing.T) {
-		canvas := NewMapCanvas(5, 5)
+		canvas := NewCanvas(5, 5)
 		rectangle := NewRectangleCommand(2, 2, 4, 4, 'r')
 		rectangle.Apply(canvas)
 
@@ -117,7 +117,7 @@ func TestFill(t *testing.T) {
 
 func TestClear(t *testing.T) {
 	t.Run("clears the canvas", func(t *testing.T) {
-		canvas := NewMapCanvas(3, 3)
+		canvas := NewCanvas(3, 3)
 		canvas.Set(2, 3, 's')
 
 		NewClearCommand().Apply(canvas)
