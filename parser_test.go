@@ -17,9 +17,9 @@ func TestParseCommand(t *testing.T) {
 	}
 
 	for _, input := range validInputs {
-		command, err := ParseCommand(input)
-		assert.Nil(t, err, input)
-		assert.NotNil(t, command, input)
+		result := ParseCommand(input)
+		assert.Nil(t, result.Failure, input)
+		assert.NotNil(t, result.Success, input)
 	}
 
 	invalidInputs := []string{
@@ -31,8 +31,8 @@ func TestParseCommand(t *testing.T) {
 	}
 
 	for _, input := range invalidInputs {
-		command, err := ParseCommand(input)
-		assert.Equal(t, errParseCommand, err, input)
-		assert.Nil(t, command, input)
+		result := ParseCommand(input)
+		assert.Equal(t, errParseCommand, result.Failure, input)
+		assert.Nil(t, result.Success, input)
 	}
 }

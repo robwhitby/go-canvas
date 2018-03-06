@@ -24,16 +24,10 @@ func main() {
 		if strings.ToLower(input) == "q" {
 			break
 		}
-		command, err := ParseCommand(input)
-		if err != nil {
-			fmt.Println(err)
-			continue
-		}
-		if err := command.Apply(canvas); err != nil {
+		if err := ParseCommand(input).Apply(canvas); err != nil {
 			fmt.Println(err)
 			continue
 		}
 		StringRenderer(canvas, os.Stdout)
 	}
-
 }
