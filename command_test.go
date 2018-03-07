@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestNewCanvas(t *testing.T) {
+func TestNewCanvasCommand(t *testing.T) {
 
 	t.Run("creates new canvas", func(t *testing.T) {
 		canvas := NewCanvas(3, 3)
@@ -22,7 +22,7 @@ func TestNewCanvas(t *testing.T) {
 
 }
 
-func TestLine(t *testing.T) {
+func TestLineCommand(t *testing.T) {
 
 	t.Run("draws a horizontal line", func(t *testing.T) {
 		canvas := NewCanvas(10, 1)
@@ -73,7 +73,7 @@ func TestLine(t *testing.T) {
 	})
 }
 
-func TestRectangle(t *testing.T) {
+func TestRectangleCommand(t *testing.T) {
 
 	t.Run("draws a rectangle", func(t *testing.T) {
 		canvas := NewCanvas(3, 3)
@@ -85,7 +85,7 @@ func TestRectangle(t *testing.T) {
 	})
 }
 
-func TestFill(t *testing.T) {
+func TestFillCommand(t *testing.T) {
 
 	t.Run("fills an empty canvas", func(t *testing.T) {
 		canvas := NewCanvas(3, 3)
@@ -115,7 +115,7 @@ func TestFill(t *testing.T) {
 	})
 }
 
-func TestClear(t *testing.T) {
+func TestClearCommand(t *testing.T) {
 	t.Run("clears the canvas", func(t *testing.T) {
 		canvas := NewCanvas(3, 3)
 		canvas.Set(2, 3, 's')
